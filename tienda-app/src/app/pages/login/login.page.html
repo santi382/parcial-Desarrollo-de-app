@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="login-container">
+    
+    <div class="header-section">
+      <ion-icon name="cart-outline" color="primary" class="logo-icon"></ion-icon>
+      <h1>{{ isLogin ? 'Bienvenido' : 'Regístrate' }}</h1>
+      <p>Tienda Virtual - Software Engineering</p>
+    </div>
+
+    <ion-card class="login-card">
+      <ion-card-content>
+        <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+          
+          <ion-item lines="none" class="custom-input">
+            <ion-icon name="mail-outline" slot="start"></ion-icon>
+            <ion-input type="email" formControlName="email" placeholder="Correo electrónico"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="custom-input">
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <ion-input type="password" formControlName="password" placeholder="Contraseña"></ion-input>
+          </ion-item>
+
+          <ion-button expand="block" type="submit"  class="login-button">
+            {{ isLogin ? 'INGRESAR' : 'CREAR CUENTA' }}
+          </ion-button>
+        </form>
+
+        <div class="footer-link" (click)="toggleMode()">
+          {{ isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión' }}
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

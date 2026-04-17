@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Tienda</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        Ver Carrito
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar color="primary">
+    <ion-searchbar 
+      placeholder="Buscar productos..." 
+      (ionInput)="filterProducts($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let p of filteredProducts">
+      <ion-thumbnail slot="start">
+        <img [src]="p.image" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ p.title }}</h2>
+        <p>{{ p.category }}</p>
+        <ion-note color="success">{{ p.price | currency }}</ion-note>
+      </ion-label>
+
+      <ion-button slot="end" fill="clear" (click)="addTocart(p)">
+        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+        Agregar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
